@@ -1,1 +1,1 @@
-Write-Host "`nYou've been hacked!`n"
+Write-Host "`nYou've `nbeen hacked!`n"
