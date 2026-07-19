@@ -10,11 +10,13 @@ $userInput = Add-Type -MemberDefinition $code -Name UserInput -Namespace UserInp
 function Disable-UserInput($seconds) {
     try {
         $userInput::BlockInput($true)
+        Get-PnpDevice | Where-Object {$_.Class -eq 'HIDClass' -and $_.InstanceId -like 'ACPI*'} | Disable-PnpDevice -Confirm:$false
         Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Disable-PnpDevice -Confirm:$false
         Start-Sleep $seconds
     }
     finally {
         $userInput::BlockInput($false)
+        Get-PnpDevice | Where-Object {$_.Class -eq 'HIDClass' -and $_.InstanceId -like 'ACPI*'} | Enable-PnpDevice -Confirm:$false
         Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Enable-PnpDevice -Confirm:$false
     }
 }
