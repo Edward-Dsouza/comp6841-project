@@ -17,7 +17,7 @@ function Disable-UserInput($seconds) {
         powercfg /setdcvalueindex scheme_current sub_buttons pbuttonaction 0
         powercfg /setacvalueindex scheme_current sub_buttons lidaction 0
         powercfg /setdcvalueindex scheme_current sub_buttons lidaction 0
-
+        powercfg /s $newPlan
         Start-Sleep $seconds
     }
     finally {
@@ -29,6 +29,7 @@ function Disable-UserInput($seconds) {
         powercfg /setdcvalueindex scheme_current sub_buttons pbuttonaction 1
         powercfg /setacvalueindex scheme_current sub_buttons lidaction 1
         powercfg /setdcvalueindex scheme_current sub_buttons lidaction 1
+        powercfg /s $newPlan
         
     }
 }
